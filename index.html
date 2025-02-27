@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Homepage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="mystyle.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  /* Uniform Card Height */
+  .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .card-img-top {
+    height: 200px;  /* Set a fixed height */
+    object-fit: contain; /* Ensures the entire image fits without cropping */
+    background-color: #f8f9fa; /* Optional: Adds a background if image doesn't fill space */
+}
+
+
+  /* List Styling */
+  .list-group-item {
+      font-size: 14px;
+      padding: 10px;
+  }
+
+  .card-body {
+      flex-grow: 1;
+  }
+</style>
+<script>
+  function handleError() {
+      window.location.href = "error.html";
+  }
+</script>
+
+</head>
+<body id="myPage">
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="index.html" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>My Home </a>
+  <a href="/cs_survey.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">CS Department Survey</a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+</div>
+ </div>
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="Images/cover.jpg" alt="boat" style="width:100%;min-height:250px;max-height:600px;">
+  <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-xlarge w3-theme w3-hover-teal" title="Go To W3.CSS">Hello, There!</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-teal w3-display-container"> 
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-display-topright"><i class="fa fa-remove"></i></span>
+      <h4>Hi, I am Ashima Sharma, a software engineering graduate student at GMU.</h4>
+      <h5>I'm glad you're here! <i class="fa fa-smile-o"></i></h5>
+    </header>
+    <div class="w3-container">
+      <p>I hope you'll get to know me through this webpage.</p>
+      <p>Do visit the <a class="w3-text-teal" href="/w3css/default.asp"> Computer Science Department </a> page at the navigation bar to know about the CS department at GMU.</p>
+    </div>
+    <footer class="w3-container w3-teal">
+      <p>Have a nice day!</p>
+    </footer>
+  </div>
+</div>
+
+<!-- About Me Container -->
+<div class="container py-5" id="about">
+  <div class="row align-items-center justify-content-center">
+
+    <!-- Left Section: Picture + LinkedIn -->
+    <div class="col-md-5 text-center mb-4">
+      <img src="Images/picture.jpg" alt="Ashima Sharma" 
+           class="img-fluid rounded shadow-lg border border-3 border-secondary"
+           style="max-width: 70%; border-radius: 15px;">
+      
+    </div>
+
+    <!-- Right Section: Content -->
+    <div class="col-md-7">
+      <h2 class="fw-bold mb-3 text-teal text-center">About Me</h2>
+
+      <p style="text-align: justify;">
+        Hello everyone, I am <i><strong>Ashima Sharma</i></strong> and I'm currently pursuing my MS in Software Engineering at George Mason University. 
+        I am passionate about full-stack development, cloud computing, and usability engineering. I am always eager to solve complex 
+        problems and build impactful software solutions. 
+        
+        I have prior experience working as a full-stack developer at Eninrac Consulting Private Limited in India, where I led 
+        the development and implementation of user interface components, ensuring technical feasibility and optimizing performance. 
+        
+        I also have research experience from my Master of Technology in Computer Science, where I had the opportunity to work on a government-funded project called <i>AgroVaid</i>. It was an advanced agricultural system integrating ARM 
+        controllers, 3D model generation, GSM, and audio/text input methods. The system allowed farmers to query crop and pest 
+        data via image recognition, audio, or text input, generating real-time results on a screen or through audio. It also used 
+        a 3D scanner to identify pests and match them with a database for detailed information. 
+        
+        Outside of work, I like cooking for friends and family, playing badminton, and diving into a good book. These activities 
+        help me relax and recharge, offering a healthy balance to my busy schedule.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bootstrap Icons (for LinkedIn button) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+<!-- Button Styling-->
+<style>
+  .btn-outline-teal {
+    color: #008080;
+    border-color: #008080;
+  }
+
+  .btn-outline-teal:hover {
+    background-color: #008080;
+    color: white;
+  }
+
+  .text-teal {
+    color: #008080 !important;
+  }
+</style>
+<hr style="border: 1px solid #000; width: 90%; margin: 20px auto;">
+
+<!-- Profile Section -->
+<div class="container py-3" id="work">
+  <h2 class="text-center mb-4"><strong>My Profile </strong></h2>
+  <div class="row g-4">
+
+      <!-- Academics -->
+      <div class="col-lg-3 col-md-6">
+          <div class="card shadow-sm collapsible">
+              <img src="Images/education.jpg" class="card-img-top" alt="Academics">
+              <div class="card-body">
+                  <h5 class="card-title">Academics</h5>
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">George Mason University, MS in Software Engineering</li>
+                      <li class="list-group-item">University of Jammu, India, MTech in Computer Science</li>
+                      <li class="list-group-item">Model Institute of Engg. and Tech., India, BE in Computer Science</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="col-lg-3 col-md-6">
+          <div class="card shadow-sm collapsible">
+              <img src="Images/projects.jpg" class="card-img-top" alt="Projects">
+              <div class="card-body">
+                  <h5 class="card-title">Projects</h5>
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><strong>Personal Finance Management Web Application</strong> - Developed a full-stack web application for real-time personal finance management, enabling users to track expenses, manage budgets, and analyze spending patterns through interactive visualizations. (Fall 2024)</li>
+                      <li class="list-group-item"><strong>File Sharing System</strong> - Developed a file-sharing system using Java Sockets and Java RMI, ensuring efficient concurrency management with multithreading. (Fall 2024)</li>
+                      <li class="list-group-item"><strong>Automated Regression Testing for E-Commerce Platform</strong> - Developed an automated testing framework for an e-commerce web application utilizing Selenium for browser automation, JUnit and TestNG for test management, and Maven for project dependency management. (Spring 2024)</li>
+                      <li class="list-group-item"><strong>AgroVaid: Advanced Agricultural System</strong> - Designed and developed AgroVaid, an advanced agricultural system integrating ARM controllers, 3D model generation, GSM, and audio/text input methods. (Fall 2015)</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <!-- Publications -->
+      <div class="col-lg-3 col-md-6">
+          <div class="card shadow-sm collapsible">
+              <img src="Images/publications.jpg" class="card-img-top" alt="Publications">
+              <div class="card-body">
+                  <h5 class="card-title">Publications</h5>
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Ashima Sharma, Pawanesh Abrol, and Parveen K. Lehana, “AgroVaid: A user-friendly agricultural system for enhanced farmer interaction,” International Journal of Scientific and Technical Advancements, Volume 2, Issue 2, pp. 47-51, 2016.</li>
+                      <li class="list-group-item">A. Sharma and P. K. Lehana, "Accuracy of Point Cloud Estimation for Tiny Objects," Proceedings of the Conference, 2016. [<a href="https://api.semanticscholar.org/CorpusID:212557784" target="_blank">Link</a>]</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <!-- Work Experience -->
+      <div class="col-lg-3 col-md-6">
+          <div class="card shadow-sm collapsible">
+              <img src="Images/work_ex.jpg" class="card-img-top" alt="Work Experience">
+              <div class="card-body">
+                  <h5 class="card-title">Work Experience</h5>
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><strong>Assistant Professor</strong>, University Institute of Engineering and Technology, Jammu (Aug 2018 - Apr 2021)</li>
+                      <li class="list-group-item"><strong>Full Stack Developer</strong>, Eninrac Consulting Private Limited (Feb 2017 - Jul 2018)</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<footer class="w3-container w3-padding-32 text-white text-center" style="background-color: #000;">
+  <h4 class="text-teal">Stay Connected</h4>
+
+  <!-- Email Section -->
+  <div class="d-flex justify-content-center align-items-center mb-3">
+    <i class="bi bi-envelope" style="font-size: 30px; margin-right: 10px;"></i>
+    <a href="mailto:your-email@example.com" class="text-white text-decoration-none" style="font-size: 20px;">asharm55@gmu.edu</a>
+  </div>
+
+  <!-- LinkedIn Section -->
+  <div class="d-flex justify-content-center align-items-center">
+    <i class="bi bi-linkedin" style="font-size: 30px; margin-right: 10px;"></i>
+    <a href="https://www.linkedin.com/in/aashima-sharma27/" class="text-white text-decoration-none" target="_blank" style="font-size: 20px;">Ashima Sharma</a>
+  </div>
+
+  <!-- Scroll to Top Button -->
+  <div class="mt-4">
+    <a href="#" class="text-teal" style="font-size: 24px;" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+      <i class="bi bi-arrow-up-circle"></i> Back to Top
+    </a>
+  </div>
+</footer>
+
+<!-- Add Bootstrap Icons CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+
+</body>
+</html>

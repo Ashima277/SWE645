@@ -1,0 +1,435 @@
+<!-- Submitted by: Ashima Sharma -->
+ <!-- Gnumber: G01482201-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS Department Survey</title>
+  <style>
+ p.custom-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #006633;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      top: 150px;
+      left: 60px;
+      position:absolute;
+    }
+    h2.custom-greeting{
+      text-align:center;
+      color:red;
+    }
+   .custom-heading {
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Includes padding in width */
+  margin: 0;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 5px solid #006633; /* Green border */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffcc33; /* Yellow background */
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+/* Logo styling */
+.custom-heading img {
+  width: 70px; /* Adjust logo size */
+  height: 70px;
+  margin-right: 15px; /* Space between logo and text */
+}
+
+/* Text container to ensure proper stacking */
+.custom-heading-text {
+  display: flex;
+  flex-direction: column; /* Stack h6 on top of h1 */
+  justify-content: center; /* Vertically align text */
+}
+
+/* University name */
+.custom-heading-text h6 {
+  font-size: 1.5rem;
+  color: #006633;
+  margin: 0; /* Remove default margin */
+}
+
+/* Department name */
+.custom-heading-text h1 {
+  font-size: 2.5rem;
+  color: #006633;
+  margin-top: 5px; /* Space between h6 and h1 */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+.header img {
+  width: 50px;  
+  height: auto;
+  margin-right: 10px; /* Space between logo and heading */
+}
+    
+.back-button:hover {
+  background-color: #004d26;
+ }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 10px;
+  border-left: 40px solid #006633;
+  border-right: 40px solid #006633
+}
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  margin: auto;
+}
+    h2 {
+      text-align: center;
+      color: #006633;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .required {
+      color: red;
+    }
+    .form-section {
+      margin-bottom: 20px;
+    }
+    .checkbox-group, .radio-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .checkbox-group label, .radio-group label {
+      margin-left: 20px;
+    }
+    .back-button {
+            position: absolute;
+            top: 150px;
+            right: 60px;
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+      }
+    button:hover {
+      background-color: #004d26;
+    }
+    .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+    }
+    /* Button Styling */
+        .submit-btn {
+            background-color: #006633; /* Green color */
+            color: white; /* White text */
+            font-size: 16px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .reset-btn {
+            background-color: #006633; /* Green color */
+            color: white; /* White text */
+            font-size: 16px;
+            padding: 10px 54px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Hover Effect */
+        .submit-btn:hover {
+            background-color: #004d26; /* Darker green on hover */
+        }
+        .error { 
+          color: red; 
+          font-size: 14px; }
+          /* City-State Container*/
+          .zcontainer {
+            display: inline-block;
+            width: 700px;
+            height: 30px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            text-align: left;
+            line-height: 30px;
+            font-weight: bold;
+            margin-left: 7px;
+        }
+  </style>
+    <!-- Custom Heading -->
+<div class="custom-heading">
+  <img src="Images/gmulogo.jpeg" alt="GMU Logo">
+  <div class="custom-heading-text">
+    <h6>George Mason University</h6>
+    <h1><strong>Department of Computer Science</strong></h1>
+  </div>
+</div>
+
+    <script>
+    
+        //Form Validation
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission until validation is done
+
+            let errors = [];
+
+            // Name Validation (only alphabets)
+            let name = document.getElementById("username").value.trim();
+            if (!/^[A-Za-z\s]+$/.test(name)) {
+                errors.push("Name should contain only alphabets.");
+                document.getElementById("username").value = "";
+            }
+
+            // Address Validation (allowing alphanumeric and basic punctuation)
+            let address = document.getElementById("address").value.trim();
+            if (!/^[A-Za-z0-9\s.,#-]+$/.test(address)) {
+                errors.push("Address should contain only alphanumeric characters, spaces, commas, periods, #, or hyphens.");
+                document.getElementById("address").value = "";
+            }
+
+            // Checkbox Validation (at least 2 checkboxes checked)
+            let checkboxes = document.querySelectorAll("input[name='liked']:checked");
+            if (checkboxes.length < 2) {
+                errors.push("Please select at least two checkboxes.");
+            }
+
+            // Radio Button Validation (at least one selected)
+            let radioSelected = document.querySelector("input[name='interest']:checked");
+            if (!radioSelected) {
+                errors.push("Please select a radio button.");
+            }
+
+            // Email Validation
+            let email = document.getElementById("email").value.trim();
+            if (!/^\S+@\S+\.\S+$/.test(email)) {
+                errors.push("Please enter a valid email address.");
+                document.getElementById("email").value = "";
+            }
+
+            // Display all errors
+            if (errors.length > 0) {
+                alert(errors.join("\n")); // Show a consolidated error message
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            document.getElementById("surveyForm").submit(); // Submit the form if valid
+        }
+
+        function resetForm() {
+            document.getElementById("surveyForm").reset();
+        }
+
+        // AJAX and JSON Implementation.
+        function fetchCityState() {
+            let zipCode = document.getElementById("zip").value.trim();
+            let cityField = document.getElementById("city");
+            let stateField = document.getElementById("state");
+            let errorMsg = document.getElementById("zipError");
+
+            if (zipCode.length !== 5 || isNaN(zipCode)) {
+                cityField.innerText = "";
+                stateField.innerText = "";
+                errorMsg.innerText = "Invalid ZIP code format!";
+                return;
+            }
+
+            // Create AJAX request
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "zip.json", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    let found = data.zipcodes.find(entry => entry.zip === zipCode);
+
+                    if (found) {
+                        cityField.innerText = found.city;
+                        stateField.innerText = found.state;
+                        errorMsg.innerText = "";
+                    } else {
+                        cityField.innerText = "";
+                        stateField.innerText = "";
+                        errorMsg.innerText = "ZIP code not found!";
+                    }
+                } else {
+                    errorMsg.innerText = "Error loading ZIP data!";
+                }
+            };
+            xhr.onerror = function () {
+                errorMsg.innerText = "Error connecting to the server!";
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+ 
+  <button class="back-button" onclick="goBack()">⬅ Back</button>
+  <script>
+      function goBack() {
+          window.history.back();
+      }
+  </script>
+<div class="container">
+  <div class="header">
+    <img src="Images/gmulogo.jpeg" alt="Department Logo">
+    <h2>Computer Science Department Survey Form</h2>
+</div>
+<hr style="border: 1px solid #888888; width: 100%; margin: 10px auto;">
+<br>
+  <form autocomplete="on" action="#" method="POST" id="surveyForm">
+    <!-- Name -->
+    <div class="form-section" id="surveyForm"> 
+      <label for="username">Full Name <span class="required">*</span></label>
+      <input type="text" id="username" name="username" required placeholder="John Doe" autofocus>
+    </div> 
+    
+  <!-- Address -->
+    <div class="form-section">
+      <label for="address">Street Address <span class="required">*</span></label>
+      <input type="text" id="address" name="address" required placeholder="1234 Main St">
+    </div>
+
+  <!-- Zip Code -->
+  <div class="form-section">
+  <label for="zip">Zip Code <span class="required">*</span></label>
+  <input type="text" id="zip" name="zip" required placeholder="22301">
+  </div>
+
+    <!-- City -->
+    <div class="form-section">
+      <label for="city">City <span class="required">*</span></label>
+      <input type="text" id="City" name="city" required placeholder="Fairfax">
+    </div>
+
+    <!-- State -->
+    <div class="form-section">
+      <label for="state">State <span class="required">*</span></label>
+      <input type="text" id="state" name="state" required placeholder="Virginia">
+    </div>
+    
+    <!-- Telephone -->
+    <div class="form-section">
+      <label for="telephone">Telephone Number <span class="required">*</span></label>
+      <input type="tel" id="telephone" name="telephone" required placeholder="(555) 555-5555" pattern="\(\d{3}\) \d{3}-\d{4}">
+    </div>
+
+    <!-- Email -->
+    <div class="form-section">
+      <label for="email">Email Address <span class="required">*</span></label>
+      <input type="email" id="email" name="email" required placeholder="example@mail.com">
+    </div>
+
+    <!-- URL -->
+    <div class="form-section">
+      <label for="url">Website URL</label>
+      <input type="url" id="url" name="url" placeholder="https://www.example.com">
+    </div>
+
+    <!-- Date of Survey -->
+    <div class="form-section">
+      <label for="date">Date of Survey <span class="required">*</span></label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <!-- High School Graduation Month -->
+    <div class="form-section">
+      <label for="graduation-month">High School Graduation Month <span class="required">*</span></label>
+      <input list="months" id="graduation-month" name="graduation-month" required placeholder="Select a month">
+      <datalist id="months">
+        <option value="January">
+        <option value="February">
+        <option value="March">
+        <option value="April">
+        <option value="May">
+        <option value="June">
+        <option value="July">
+        <option value="August">
+        <option value="September">
+        <option value="October">
+        <option value="November">
+        <option value="December">
+      </datalist>
+      <input type="text" id="graduation-year" name="graduation-year" required placeholder="Year (e.g., 2025)">
+    </div>
+
+    <!-- Checkbox Group: What did you like most -->
+    <div class="form-section checkbox-group">
+      <label><strong>What did you like most about the campus?</strong></label>
+      <label><input type="checkbox" name="liked" value="students"> Students</label>
+      <label><input type="checkbox" name="liked" value="location"> Location</label>
+      <label><input type="checkbox" name="liked" value="campus"> Campus</label>
+      <label><input type="checkbox" name="liked" value="atmosphere"> Atmosphere</label>
+      <label><input type="checkbox" name="liked" value="dorm-rooms"> Dorm Rooms</label>
+      <label><input type="checkbox" name="liked" value="sports"> Sports</label>
+    </div>
+
+    <!-- Radio Group: How did you become interested -->
+    <div class="form-section radio-group">
+      <label><strong>How did you become interested in GMU?</strong></label>
+      <label><input type="radio" name="interest" value="friends"> Friends</label>
+      <label><input type="radio" name="interest" value="television"> Television</label>
+      <label><input type="radio" name="interest" value="internet"> Internet</label>
+      <label><input type="radio" name="interest" value="other"> Other</label>
+    </div>
+
+    <!-- Text Area: Additional Comments -->
+    <div class="form-section">
+      <label for="comments">Additional Comments</label>
+      <textarea id="comments" name="comments" rows="4" placeholder="Enter any additional comments!"></textarea>
+    </div>
+
+    <!-- Dropdown: Likelihood to Recommend -->
+    <div class="form-section">
+      <label for="recommend">Likelihood to Recommend GMU:</label>
+      <select id="recommend" name="recommend">
+        <option value="very-likely">Very Likely</option>
+        <option value="likely">Likely</option>
+        <option value="unlikely">Unlikely</option>
+      </select>
+    </div>
+          
+    <!-- Submit Button -->
+    <div class="button-container">
+      <button type="submit" class="submit-btn" onclick="validateForm(event)">Submit Survey</button>
+  </div>
+  <div class="button-container">
+  <button type="button" class = "reset-btn" onclick="resetForm()">Reset</button>
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
