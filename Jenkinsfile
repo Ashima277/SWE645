@@ -18,7 +18,11 @@ pipeline {
         sh 'git log -1 --oneline'
     }
          }
-        
+        stage('Test Docker') {
+    steps {
+        sh 'docker version'
+    }
+}
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER .'
