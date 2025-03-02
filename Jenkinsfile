@@ -9,9 +9,15 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
+                cleanWs() // Ensures a clean workspace before cloning
                 git credentialsId: 'git-token', url: 'https://github.com/Ashima277/SWE645', branch: 'main'
             }
         }
+        stage('Check Git Status') {
+    steps {
+        sh 'git log -1 --oneline'
+    }
+         }
         
         stage('Build Docker Image') {
             steps {
