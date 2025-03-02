@@ -31,8 +31,11 @@ pipeline {
         
         stage('Push to Artifact Registry') {
             steps {
+                withCredentials([googleServiceAccount(credentialsId: 'gsa')]) {
+                sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                 sh 'gcloud auth configure-docker us-central1-docker.pkg.dev'
                 sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'
+                }
             }
         }
 
