@@ -35,7 +35,7 @@ pipeline {
         
         stage('Push to Artifact Registry') {
             steps {
-                withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                withCredentials([file(credentialsId: 'gcp-key')]) {
                     sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'  // Use the environment variable
                     sh 'gcloud auth configure-docker us-central1-docker.pkg.dev'  // Configures Docker to authenticate with Google Artifact Registry
                     sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'  // Push image to Artifact Registry
