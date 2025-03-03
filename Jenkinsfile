@@ -43,7 +43,7 @@ pipeline {
         }
 
                 stage('Deploy to GKE') {
-    withCredentials([googleServiceAccount(credentialsId: 'your-google-credentials-id', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+    withCredentials([googleServiceAccount(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
         sh '''
             gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
             gcloud container clusters get-credentials hw-cluster --zone us-central1-c --project student-survey-452118
