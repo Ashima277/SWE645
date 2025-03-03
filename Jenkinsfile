@@ -48,7 +48,7 @@ pipeline {
                     sh '''
                     gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                     gcloud config set project student-survey-452118
-                    gcloud container clusters get-credentials hw2 --zone us-central1-a
+                    gcloud container clusters get-credentials hw-cluster --zone us-central1-c
                     kubectl apply -f deployment.yaml
                     '''
                 }
