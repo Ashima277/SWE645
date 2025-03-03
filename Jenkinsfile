@@ -13,35 +13,38 @@ pipeline {
                 git credentialsId: 'git-token', url: 'https://github.com/Ashima277/SWE645', branch: 'main'
             }
         }
+
         stage('Check Git Status') {
-    steps {
-        sh 'git log -1 --oneline'
-    }
-         }
+            steps {
+                sh 'git status'  // Check for any changes in the working directory
+            }
+        }
+
         stage('Test Docker') {
-    steps {
-        sh 'docker version'
-    }
-}
+            steps {
+                sh 'docker version'  // Check Docker version
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER .'
+                sh 'docker build -t $IMAGE_NAME:$BUILD_NUMBER .'  // Build Docker image with unique tag
             }
         }
         
         stage('Push to Artifact Registry') {
             steps {
-                withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]){
-                sh 'gcloud auth activate-service-account --key-file=/var/lib/jenkins/student-survey-452118-179aa0c1c713.json'
-                sh 'gcloud auth configure-docker us-central1-docker.pkg.dev'
-                sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'
+                withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'  // Use the environment variable
+                    sh 'gcloud auth configure-docker us-central1-docker.pkg.dev'  // Configures Docker to authenticate with Google Artifact Registry
+                    sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'  // Push image to Artifact Registry
                 }
             }
         }
 
         stage('Deploy to GKE') {
             steps {
-                sh 'kubectl set image deployment/survey-app survey-app=$IMAGE_NAME:$BUILD_NUMBER --record'
+                sh 'kubectl set image deployment/survey-app survey-app=$IMAGE_NAME:$BUILD_NUMBER --record'  // Update the GKE deployment
             }
         }
     }
