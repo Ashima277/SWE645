@@ -4,6 +4,7 @@ pipeline {
     environment {
         PROJECT_ID = 'student-survey-452118'
         IMAGE_NAME = 'us-central1-docker.pkg.dev/student-survey-452118/my-repo/hw2'
+        GOOGLE_APPLICATION_CREDENTIALS = '/var/lib/jenkins/jenkins-gke-key'
     }
 
     stages {
