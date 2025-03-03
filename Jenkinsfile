@@ -44,6 +44,9 @@ pipeline {
 
         stage('Deploy to GKE') {
             steps {
+                sh 'gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS'
+                sh 'gcloud container clusters get-credentials hw-cluster --zone us-central1-c
+
                 sh 'kubectl set image deployment/survey-app survey-app=$IMAGE_NAME:$BUILD_NUMBER --record'  // Update the GKE deployment
             }
         }
