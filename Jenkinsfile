@@ -42,16 +42,17 @@ pipeline {
             }
         }
 
-                stage('Deploy to GKE') {
-    withCredentials([googleServiceAccount(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
-        sh '''
-            gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-            gcloud container clusters get-credentials hw-cluster --zone us-central1-c --project student-survey-452118
-            kubectl config current-context
-            kubectl get nodes
-            kubectl set image deployment/survey-app hw2-sha256-1=us-central1-docker.pkg.dev/student-survey-452118/my-repo/hw2:22 --record
-        '''
-    }
-}
+        stage('Deploy to GKE') {
+            steps {
+                withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh '''
+                    gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                    gcloud config set project student-survey-452118
+                    gcloud container clusters get-credentials hw2 --zone us-central1-a
+                    kubectl apply -f deployment.yaml
+                    '''
+                }
+            }
+        }
     }
 }
