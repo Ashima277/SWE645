@@ -49,7 +49,7 @@ pipeline {
                     gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
                     gcloud config set project student-survey-452118
                     gcloud container clusters get-credentials hw-cluster --zone us-central1-c
-                    kubectl set image deployment/hw2-sha256-1 hw2-sha256-1=$IMAGE_NAME:$BUILD_NUMBER --record
+                    kubectl set image deployment/survry-app hw2-sha256-1=$IMAGE_NAME:$BUILD_NUMBER --record
                     '''
                 }
             }
